@@ -1,32 +1,68 @@
-import { Text, View, ScrollView, SafeAreaView, Appearance } from "react-native";
+import { View, Text, SafeAreaView, ScrollView, Appearance, StatusBar, BackHandler, TouchableOpacity } from 'react-native';
 import React, { useState, useEffect } from 'react';
+import { router } from 'expo-router';
 
 import styles from '../components/style/styles';
 
-export default function Index() {
+const getStatusBarHeight = () => {
+	return StatusBar.currentHeight || 0;
+}
+
+export default function Index({ navigation }){
 	const [theme, setTheme] = useState(Appearance.getColorScheme());
-	const [board, setBoard] = useState(Array(9), fill(null));
+	const statusBarHeight = getStatusBarHeight();
+	
+	{/* Function to close the app */}
+	const handleQuit = () => {
+		BackHandler.exitApp();
+	}
 	
 	useEffect(() => {
-		const listener = Appearance.addChangeListener(({ colorScheme }) => {
-			setTheme(colorScheme);
+		const listener = Appearance.addChangeListener(({ color }) => {
+			setTheme(color);
 		});
-
+		
 		return() => {
-			listener.remove();
-		};
+			listener.remove()
+		}
+		
 	}, []);
-	
-	return (
+
+	return(
 		<SafeAreaView style={ theme === 'dark'? styles.safeAreaViewDark : styles.safeAreaViewLight }>
-			<ScrollView>
-				<View style={styles.basicContainer}>
-					<Text style={ theme === 'dark'? styles.textLight : styles.textDark }>Hi</Text>
-					{board.map((value, index) => {
-						return <View style={styles.boardContainer} /> 
-					})}
+			<StatusBar 
+				barStyle={ theme === 'dark'? 'light-content' : 'dark-content' }
+			/>
+			<ScrollView style={{ flexGrow: 1, marginTop: statusBarHeight }}>
+				<View style={[styles.basicContainer, {marginTop: statusBarHeight}]}>
+					<Text style={[ theme === 'dark'? styles.textLight : styles.textDark, { fontSize: 30, fontWeight: 'bold' } ]}>Welcome to TicTacToe!</Text>
+				</View>
+				
+				<View style={[styles.basicContainer, {marginTop: statusBarHeight}]}>
+					<TouchableOpacity
+						onPress={() => router.push('/home')}
+						style={ theme === 'dark'? styles.buttonLight : styles.buttonDark }
+					>
+						<Text style={ theme === 'dark'? styles.buttonTextLight : styles.buttonTextDark }>Play as Guest</Text>
+					</TouchableOpacity>
+					
+					<TouchableOpacity
+						onPress={() => router.push('/sign-in')}
+						style={ theme === 'dark'? styles.buttonLight : styles.buttonDark }
+					>
+						<Text style={ theme === 'dark'? styles.buttonTextLight : styles.buttonTextDark }>Log in</Text>
+					</TouchableOpacity>
+				
+					<TouchableOpacity
+						onPress={() => handleQuit()}
+						style={ theme === 'dark'? styles.buttonLight : styles.buttonDark }
+					>
+						<Text style={ theme === 'dark'? styles.buttonTextLight : styles.buttonTextDark }>Quit</Text>
+					</TouchableOpacity>
+					
+					
 				</View>
 			</ScrollView>
 		</SafeAreaView>
-  );
-}
+	)
+} 
