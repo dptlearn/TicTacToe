@@ -133,7 +133,7 @@ const OfflineMode = () => {
 			
 				<View style={[styles.basicContainer, {marginTop: statusBarHeight}]}>
 					<Text style={styles.headerText}>TicTacToe</Text>
-					<Text style={ theme === 'dark'? styles.textLight : styles.textDark }>Offline Mode</Text>
+					<Text style={[ theme === 'dark'? styles.textLight : styles.textDark, {fontStyle: 'italic', fontWeight: 'bold'} ]}>Offline Mode</Text>
 				</View>
 				
 				<View style={{ marginTop: statusBarHeight, alignItems: 'center' }}>

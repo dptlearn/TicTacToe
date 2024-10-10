@@ -77,7 +77,8 @@ const styles = StyleSheet.create({
 		borderRadius: 10,
 		borderColor: '#fff',
 		alignItems: 'center',
-		marginBottom: 20
+		marginBottom: 20,
+		backgroundColor: '#fff'
 	},
 	
 	buttonDark: {
@@ -87,7 +88,8 @@ const styles = StyleSheet.create({
 		borderRadius: 10,
 		borderColor: 'black',
 		alignItems: 'center',
-		marginBottom: 20
+		marginBottom: 20,
+		backgroundColor: 'black'
 	},
 	
 	backArrowView: {
@@ -113,7 +115,7 @@ const styles = StyleSheet.create({
 		backgroundColor: 'rgba(0,0,0,0.5)',
 		flex: 1,
 		alignItems: 'center',
-		justifyContent: 'center'
+		justifyContent: 'center',
 	},
 	
 	modalDark: {
@@ -121,7 +123,8 @@ const styles = StyleSheet.create({
 		alignItems: 'center',
 		justifyContent: 'center',
 		width: '80%',
-		height: '50%'
+		height: '50%',
+		borderWidth: 1
 	},
 	
 	modalLight: {
@@ -129,7 +132,19 @@ const styles = StyleSheet.create({
 		alignItems: 'center',
 		justifyContent: 'center',
 		width: '80%',
-		height: '50%'
+		height: '50%',
+		borderWidth: 1
+	},
+	
+	formFieldTextInputDark: {
+		borderWidth: 1,
+		borderColor: 'black'
+	},
+	
+	formFieldTextInputLight: {
+		borderWidth: 1,
+		borderColor: '#fff',
+		color: '#fff'
 	}
 	
 });

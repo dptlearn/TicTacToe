@@ -43,21 +43,21 @@ export default function Index({ navigation }){
 						onPress={() => router.push('/home')}
 						style={ theme === 'dark'? styles.buttonLight : styles.buttonDark }
 					>
-						<Text style={ theme === 'dark'? styles.buttonTextLight : styles.buttonTextDark }>Play as Guest</Text>
+						<Text style={ theme === 'dark'? styles.buttonTextDark : styles.buttonTextLight }>Play as Guest</Text>
 					</TouchableOpacity>
 					
 					<TouchableOpacity
 						onPress={() => router.push('/sign-in')}
 						style={ theme === 'dark'? styles.buttonLight : styles.buttonDark }
 					>
-						<Text style={ theme === 'dark'? styles.buttonTextLight : styles.buttonTextDark }>Log in</Text>
+						<Text style={ theme === 'dark'? styles.buttonTextDark : styles.buttonTextLight }>Log in</Text>
 					</TouchableOpacity>
 				
 					<TouchableOpacity
 						onPress={() => handleQuit()}
 						style={ theme === 'dark'? styles.buttonLight : styles.buttonDark }
 					>
-						<Text style={ theme === 'dark'? styles.buttonTextLight : styles.buttonTextDark }>Quit</Text>
+						<Text style={ theme === 'dark'? styles.buttonTextDark : styles.buttonTextLight }>Quit</Text>
 					</TouchableOpacity>
 					
 					

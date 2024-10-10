@@ -203,7 +203,7 @@ const ComputerMode = () => {
 				
 				<View style={[ styles.basicContainer, { marginTop: statusBarHeight } ]}>
 					<Text style={styles.headerText}>TicTacToe</Text>
-					<Text style={ theme === 'dark'? styles.textLight : styles.textDark }>VS computer mode</Text>
+					<Text style={[ theme === 'dark'? styles.textLight : styles.textDark, { fontStyle: 'italic', fontWeight: 'bold' } ]}>VS computer mode</Text>
 				</View>
 				
 				{/* Display scores */}
@@ -221,7 +221,7 @@ const ComputerMode = () => {
 										style={ theme === 'dark'? styles.gridLight : styles.gridDark }
 										onPress={() => handlePress(index)}
 							>
-								<Text style={ theme === 'dark'? styles.textLight : styles.textDark }>{ cell }</Text>
+								<Text style={[ theme === 'dark'? styles.textLight : styles.textDark, { fontWeight: 'bold', fontSize: 30 } ]}>{ cell }</Text>
 							</TouchableOpacity>
 						})}
 					</View>
@@ -232,20 +232,20 @@ const ComputerMode = () => {
 					transparent={true}
 					onRequestClose={() => {setModalVisible(false)}}
 				>
-					<View style={ styles.modalOverlay }>
-						<View style={ theme === 'dark'? styles.modalDark : styles.modalLight }>
+					<View style={styles.modalOverlay}>
+						<View style={ theme === 'dark'? [styles.modalDark, {borderColor: 'white'}] : [styles.modalLight, {borderColor: 'black'}] }>
 							<Text style={styles.headerText}>Choose turn</Text>
 
 								<TouchableOpacity
 									onPress={() => {setPlayerIcon('X'), setComputerIcon('O'), setModalVisible(false)}}
-									style={[ theme === 'dark'? styles.buttonLight : styles.buttonDark, { backgroundColor: 'black', marginTop: statusBarHeight } ]}
+									style={[ theme === 'dark'? [styles.buttonLight, {backgroundColor: 'white'}] : [styles.buttonDark, {backgroundColor: 'black'}], { marginTop: statusBarHeight } ]}
 								>
 									<Text style={ theme === 'dark'? styles.buttonTextDark : styles.buttonTextLight }>Go First</Text>
 								</TouchableOpacity>
 								
 								<TouchableOpacity
 									onPress={() => {setPlayerIcon('O'), setComputerIcon('X'), setModalVisible(false)}}
-									style={[ theme === 'dark'? styles.buttonLight : styles.buttonDark, { backgroundColor: 'black' } ]}
+									style={ theme === 'dark'? [styles.buttonLight, {backgroundColor: 'white'}] : [styles.buttonDark, {backgroundColor: 'black'}] }
 								>
 									<Text style={ theme === 'dark'? styles.buttonTextDark : styles.buttonTextLight }>Go Second</Text>
 								</TouchableOpacity>

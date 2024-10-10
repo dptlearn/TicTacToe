@@ -51,20 +51,20 @@ const Home = () => {
 						style={ theme === 'dark'? styles.buttonLight : styles.buttonDark }
 						onPress={() => router.push('/computer-mode')}
 					>
-						<Text style={ theme === 'dark'? styles.buttonTextLight: styles.buttonTextDark }>VS Computer</Text>
+						<Text style={ theme === 'dark'? styles.buttonTextDark: styles.buttonTextLight }>VS Computer</Text>
 					</TouchableOpacity>
 					
 					<TouchableOpacity
 						style={ theme === 'dark'? styles.buttonLight : styles.buttonDark }
 					>
-						<Text style={ theme === 'dark'? styles.buttonTextLight : styles.buttonTextDark }>Online</Text>
+						<Text style={ theme === 'dark'? styles.buttonTextDark : styles.buttonTextLight }>Online</Text>
 					</TouchableOpacity>
 					
 					<TouchableOpacity
 						style={ theme === 'dark'? styles.buttonLight : styles.buttonDark }
 						onPress={() => router.push('offline-mode')}
 					>
-						<Text style={ theme === 'dark'? styles.buttonTextLight : styles.buttonTextDark }>Offline 2 Player</Text>
+						<Text style={ theme === 'dark'? styles.buttonTextDark : styles.buttonTextLight }>Offline 2 Player</Text>
 					</TouchableOpacity>
 				</View>
 			</ScrollView>
