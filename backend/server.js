@@ -21,7 +21,7 @@ mongoose.connect(process.env.MONGODB_URI, {
 .catch(err => console.log(err));
 
 // Sign-up route
-app.post('/api/signup', async(req, res) => {
+app.post('/api/sign-up', async(req, res) => {
 	const { username, password } = req.body;
 	
 	try{
@@ -43,7 +43,7 @@ app.post('/api/signup', async(req, res) => {
 });
 
 // Sign-in route
-app.post('/api/signin', async(req, res) => {
+app.post('/api/sign-in', async(req, res) => {
 	const { username, password } = req.body;
 	
 	try{
@@ -67,6 +67,28 @@ app.post('/api/signin', async(req, res) => {
 	}catch(error){
 		res.status(500).json({ message: 'Sign-in error', error });
 	}
+});
+
+// Reset password route
+app.post('/api/reset-password', async(req, res) => {
+	const { username, newPassword } = req.body;
+	
+	try{
+		const user = await User.findOne({ username });
+		
+		if(!user)
+		{
+			return res.status(404).json({ message: 'User not found' });
+		}
+		
+		user.password = newPassword;
+		await user.save();
+		
+		res.status(200).json({ message: 'Password reset successfully' });
+	}catch(error){
+		res.status(500).json({ message: 'Error resetting password', error });
+	}
+	
 });
 
 app.listen(PORT, () => {

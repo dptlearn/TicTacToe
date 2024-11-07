@@ -1,4 +1,4 @@
-import { View, Text, Appearance, SafeAreaView, ScrollView, StatusBar, TouchableOpacity } from 'react-native';
+import { View, Text, Appearance, SafeAreaView, ScrollView, StatusBar, TouchableOpacity, Pressable } from 'react-native';
 import React, { useState, useEffect } from 'react';
 import { router } from 'expo-router';
 
@@ -113,6 +113,12 @@ const SignIn = () => {
 						handlePress={() => handleSignIn()}
 						theme={theme}
 					/>
+					
+					<Pressable
+						onPress={() => router.push('/forget-password')}
+					>
+						<Text style={ theme === 'dark'? styles.textLight : styles.textDark }>Forget password?</Text>
+					</Pressable>
 					
 					{signInSuccess === false && (
 						<Text style={{ color: 'red' }}>{message}</Text>
